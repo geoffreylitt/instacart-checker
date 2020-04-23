@@ -1,7 +1,7 @@
 # Instacart checker
 
 A ruby script that polls Instacart's API once a minute to look for delivery slots.
-Run it on your computer, it'll ping a notification when it finds one.
+Run it on your computer, it'll ping a system notification when it finds one.
 
 It successfully found a slot for me within a few hours of running.
 
