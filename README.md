@@ -3,18 +3,19 @@
 A ruby script that polls Instacart's API once a minute to look for delivery slots.
 Run it on your computer, it'll ping a notification when it finds one.
 
-You should have an Instacart cart ready in advance.
-When you get the notification you can quickly open Instacart's site to checkout.
-Don't worry about finalizing your cart; you can always edit it later
-after you checkout.
+It successfully found a slot for me within a few hours of running.
 
 This code was hastily thrown together so YMMV, but worst case it just
 won't find a slot -- it can't really mess anything up.
-It successfully found a slot for me within a few hours of running.
 
-Tested on Mac OS with ruby 2.6.
+You should have an Instacart cart ready in advance.
+When you get the notification you can quickly open Instacart's site to checkout.
+Don't worry about perfecting your cart contents beforehand; you can always edit it later
+after you checkout.
 
-## To set it up
+Tested on Mac OS + Google Chrome + ruby 2.6.
+
+## Setup
 
 ### Install the code
 
@@ -24,11 +25,15 @@ Clone this repo: `git clone https://github.com/geoffreylitt/instacart-checker`
 
 Install terminal-notifier to get a desktop notification when it finds a slot: `brew install terminal-notifier`
 
-### Copy your unique instacart request
+### Copy your unique instacart request details
 
 This script uses your currently logged in Instacart session to authenticate
 to Instacart's web endpoint. To set it up you need to get some data
 out of your browser.
+
+This example uses Chrome, which has a convenient way to extract cURL
+request code for any browser request. Other browsers might have
+similar functionality but this has only been tested using Chorome.
 
 Open the Instacart store page for the store you want.
 Open the browser dev tools to the network tab, then
@@ -55,3 +60,8 @@ Run the script in test mode to ensure the notification feature works:
 
 Run it in normal mode, which will poll once a minute and check for a spot.
 `ruby instacart.rb`
+
+## Anticipated issues
+
+If you run it for a while, you might need to re-copy the curl request
+from the browser -- eg if your session expires. I never got to that point.
